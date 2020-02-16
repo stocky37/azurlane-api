@@ -1,0 +1,4 @@
+fastapi
+python-slugify
+tinydb
+uvicorn
