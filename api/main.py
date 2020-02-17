@@ -29,6 +29,6 @@ def health():
     return {"healthy": True}
 
 
-@app.get("/ships/{slug}")
-def read_item(slug: str):
-    return db.get(where("slug") == slugify(slug))
+@app.get("/ships/{name}")
+def get_ship(name: str):
+    return db.get(where("slug") == slugify(name))
