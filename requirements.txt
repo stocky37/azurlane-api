@@ -1,5 +1,7 @@
 fastapi
 linkheader
+pydantic>=0.32.2,<2.0.0
 python-slugify
+starlette<=0.12.9,>=0.12.9
 tinydb
 uvicorn
