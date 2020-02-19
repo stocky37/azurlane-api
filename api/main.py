@@ -35,4 +35,7 @@ def get_ships(pager: Pagination = Depends(Pagination)):
 
 @app.get("/ships/{name}", response_model=Ship, response_model_exclude_unset=True)
 def get_ship(name: str):
-    return db.get(where("slug") == slugify(name))
+    ship = db.get(where("slug") == slugify(name))
+    if not ship:
+        raise HTTPException(status_code=404, detail="Ship not found")
+    return ship
