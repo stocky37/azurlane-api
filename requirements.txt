@@ -1,4 +1,5 @@
 fastapi
+linkheader
 python-slugify
 tinydb
 uvicorn

@@ -2,11 +2,13 @@ import glob
 import json
 from typing import List
 
-from fastapi import FastAPI
+from fastapi import FastAPI, Depends
 from pydantic import BaseModel
 from slugify import slugify
 from tinydb import TinyDB, where
 from tinydb.storages import MemoryStorage
+
+from api.pagination import Pagination
 
 
 class ShipMinified(BaseModel):
@@ -32,8 +34,8 @@ def health():
 
 
 @app.get("/ships", response_model=List[ShipMinified])
-def get_ships():
-    return db.all()
+def get_ships(pager: Pagination = Depends(Pagination)):
+    return pager.paginate(db.all())
 
 
 @app.get("/ships/{name}")
